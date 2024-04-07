@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="Signup.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <h1>Sign Up</h1>
+            <div>
+                <input type="text" placeholder="Full Name" id="fullName" required>
+                <input type="email" placeholder="Email Address" id="username" required>
+                <input type="password" placeholder="Password" id="password" required>
+                <input type="password" placeholder="Confirm Password" id="conformPassword" required>
+                <button onclick="submitForm()">Sign Up</button>
+            </div>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </div>
+    <script>
+        function submitForm() {
+            const username = document.getElementById('username').value;
+            const fullName = document.getElementById('fullName').value;
+            const password = document.getElementById('password').value;
+            const conformPassword = document.getElementById('conformPassword').value;
+
+            if (conformPassword != password) {
+                console.log("password and conform pass do not match")
+                alert("password and conform pass do not match")
+                return
+            }
+
+            const formData = {
+                username: username,
+                fullName: fullName,
+                password: password
+            };
+
+            fetch('http://localhost:3000/api/v1/user/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Signup failed. Please try again.');
+                    }
+                })
+                .then(data => {
+                    localStorage.setItem("token", data.token)
+                    window.location.href = `home1.html`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+        }
+    </script>
+
+</body>
+
+</html>

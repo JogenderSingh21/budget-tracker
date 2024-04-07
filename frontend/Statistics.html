@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stats.css">
+    <link rel="stylesheet" href="dash.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="stats.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <!-- Added the opening <div> tag for the logo class -->
+        <div class="logo"></div>
+        <ul class="menu">
+            <li class="active">
+                <a href="Home1.html" class="side-items ">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="side-list-items">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="Profile.html" class="side-items">
+                    <i class="fas fa-user"></i>
+                    <span class="side-list-items">Profile</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="#" class="side-items">
+                    <i class="fas fa-chart-bar selected"></i>
+                    <span class="side-list-items selected">Statistics</span>
+                </a>
+            </li>
+            <li>
+                <a href="Records.html" class="side-items">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="side-list-items">Record</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="side-items">
+                    <i class="fas fa-cog"></i>
+                    <span class="side-list-items">Settings</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="#" class="side-items">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="side-list-items" onclick="logout()">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main--content">
+        <div class="header--wraper">
+            <div class="header--title">
+                <h2>BUDGET TRACKER</h2>
+            </div>
+        </div>
+        <div class="loader-div" id="loader-div">
+            <div class="loader"></div>
+        </div>
+        <div
+            style="width: 100%; flex-grow: 1; display: grid; grid-template-columns: auto auto; gap: 15px; min-height: 85vh;">
+            <div class="chartDiv">
+                <div style="display: flex;">
+                    <select id="expenseFilterSelect" style="border: 1px solid black;">
+                        <option value="all">All Time</option>
+                        <option value="month">Month</option>
+                        <option value="today">Today</option>
+                        <option value="date">Go To</option>
+                    </select>
+                    <input id="expenseFilterDate" style=" border: 1px solid black; display: none;" type="date"
+                        name="expenseFilterDate" />
+                </div>
+                <canvas id="expenseChart"></canvas>
+            </div>
+            <div class="chartDiv">
+                <canvas id="incomeChart" style="max-width: 350px;"></canvas>
+                <div>Total Income Pie Chart</div>
+            </div>
+        </div>
+
+        <script>
+            // Get today's date in the format yyyy-mm-dd
+            function getTodayDate() {
+                const today = new Date();
+                let month = '' + (today.getMonth() + 1);
+                let day = '' + today.getDate();
+                const year = today.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+
+                return [year, month, day].join('-');
+            }
+
+            // Set the default value of the date input field to today's date
+            document.getElementById('expenseFilterDate').value = getTodayDate();
+        </script>
+
+
+
+</body>
+
+</html>

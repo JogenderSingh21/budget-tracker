@@ -1,0 +1,15 @@
+canvas {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.chartDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(243, 235, 235);
+  border-radius: 10px;
+  padding: 10px;
+  height: 100%;
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dash.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .hero {
+            flex-grow: 1;
+            width: 100%;
+            height: 90vh;
+            /* background: #d1d1d1; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            width: 400px;
+            background: #e9a7d8;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            color: #333;
+        }
+
+        .card h1 {
+            font-weight: 500;
+            color: #000;
+        }
+
+        .card img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+
+        label {
+            display: block;
+            width: 200px;
+            background: #b66ea4;
+            color: #fff;
+            padding: 12px;
+            margin: 10px auto;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <!-- Added the opening <div> tag for the logo class -->
+        <div class="logo"></div>
+        <ul class="menu">
+            <li class="active">
+                <a href="Home1.html" class="side-items ">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="side-list-items">Home</span>
+                </a>
+            </li>
+            <li id="profileList">
+                <a href="#" class="side-items" id="profileItem">
+                    <i class="fas fa-user selected"></i>
+                    <span class="side-list-items selected">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="Statistics.html" class="side-items">
+                    <i class="fas fa-chart-bar "></i>
+                    <span class="side-list-items ">Statistics</span>
+                </a>
+            </li>
+            <li>
+                <a href="Records.html" class="side-items">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="side-list-items">Record</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="side-items">
+                    <i class="fas fa-cog"></i>
+                    <span class="side-list-items">Settings</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="#" class="side-items">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="side-list-items" onclick="logout()">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main--content">
+        <div class="header--wraper">
+            <div class="header--title">
+                <h2>BUDGET TRACKER</h2>
+            </div>
+        </div>
+        <div class="hero">
+            <div class="card">
+                <h1>Profile</h1>
+                <img src="/frontend/avatar.svg" id="profile-pic">
+                <div style="display: flex; flex-direction: column; font-size: 16px; margin-bottom: 20px; gap: 5px;">
+                    <span id="fullName">Name</span>
+                    <div>
+                        <span style="font-weight: bold;">Email: </span>
+                        <span id="username">Username</>
+                    </div>
+                </div>
+                <label for="input-file">Update Image</label>
+                <input type="file" id="input-file" accept="image/jpeg, image/png, image/jpg">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const token = localStorage.getItem('token');
+
+            if (!token) {
+                window.location.href = 'Signup.html';
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/api/v1/user/me', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                if (response.ok) {
+                    const userData = await response.json();
+                    console.log('User Data:', userData);
+                    document.getElementById("fullName").innerHTML = userData.fullName;
+                    document.getElementById("username").innerHTML = userData.username;
+                } else {
+                    window.location.href = 'Signup.html';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                window.location.href = 'Signup.html';
+            }
+        });
+    </script>
+
+    <script>
+        let profilePic = document.getElementById("profile-pic");
+        let inputFile = document.getElementById("input-file");
+
+        inputFile.onchange = function () {
+            profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        }
+    </script>
+</body>
+
+</html>

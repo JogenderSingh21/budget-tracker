@@ -1,0 +1,363 @@
+@import url("https://fonts.googleapis.com/css2? family=Poppins:wght@400;600&display=swap");
+
+* {
+  margin: 0;
+
+  padding: 0;
+
+  border: none;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+}
+
+.sidebar {
+  position: sticky;
+
+  top: 0;
+
+  left: 0;
+
+  bottom: 0;
+
+  width: 70px;
+
+  height: 100vh;
+
+  padding: 0 1.7rem;
+  color: #ffff;
+  overflow: hidden;
+  transition: width 0.5s linear;
+  background: rgb(214, 178, 223);
+}
+.sidebar:hover {
+  width: 250px;
+  transition: 0.5s;
+}
+.logo {
+  height: 88px;
+  padding: 16px;
+}
+.menu {
+  height: 88%;
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+.menu li {
+  padding: 2%;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all 0.5s ease-in-out;
+}
+.menu li:hover,
+.menu li.active {
+  background-color: rgb(214, 178, 223);
+}
+.menu a span {
+  overflow: hidden;
+}
+.menu a i {
+  font-size: 1.2rem;
+}
+.logout {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px;
+}
+.menu a {
+  color: black;
+  font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* *****main body content******** */
+.main--content {
+  background: rgb(223, 196, 230);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 1500px;
+  height: 80px;
+  padding: 1rem;
+}
+
+.header--wrapper img {
+  width: 10px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.header--wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: rgb(214, 178, 223);
+  border-radius: 5px;
+  padding: 10px 2rem;
+  margin-bottom: 1rem;
+}
+
+.header--title {
+  color: black;
+  margin: 12px 0px 40px 5px;
+}
+
+.user--info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search--box {
+  background-color: aliceblue;
+  border-radius: 5px;
+  color: rgb(113, 99, 186, 255);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  margin-right: auto;
+}
+.search--box input {
+  background: transparent;
+  padding: 3px;
+}
+.search--box i {
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+.search--box i:hover {
+  transform: scale(1.2);
+}
+/* ****Card Container**** */
+.card--container {
+  background: rgb(243, 235, 235);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 20px;
+  width: 100%; /* Adjust width if needed */
+}
+
+.card--wrapper {
+  display: flex;
+  justify-content: space-between; /* Equal spacing between cards */
+  gap: 1rem;
+  flex-wrap: wrap; /* Wrap cards to next line if needed */
+}
+
+.payment--card {
+  background: rgb(216, 183, 238);
+  border-radius: 10px;
+  padding: 1.2rem; /* Each card takes 1/3 of the space with gap */
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.5s ease-in-out;
+  flex-grow: 1;
+}
+
+.card--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.amount {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.amount--value {
+  font-size: 24px;
+  font-family: "Courier New", Courier, monospace;
+  font-style: 600;
+}
+
+.icon {
+  color: aliceblue;
+  padding: 1rem;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  background-color: blueviolet;
+}
+
+.card--detail {
+  font-size: 18px;
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+}
+/* Add income or transaction css */
+
+.add--transaction {
+  background: rgb(243, 235, 235);
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-right: 15px;
+  flex-grow: 1;
+}
+
+.add--transaction form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Adjust the gap between form elements */
+}
+
+.add--transaction label {
+  font-size: 14px; /* Reduce the font size */
+  font-weight: 600;
+}
+
+.add--transaction select,
+/*.add--transaction input[type="text"], */
+.add--transaction input[type="number"] {
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 14px; /* Reduce the font size */
+}
+
+.add--transaction button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 3px;
+  background-color: blueviolet;
+  color: white;
+  font-size: 14px; /* Reduce the font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add--transaction button:hover {
+  background-color: #8a2be2;
+}
+
+/* Summary class */
+.summary--main {
+  background: rgb(
+    243,
+    235,
+    235
+  ); /* Background color same as add--transaction */
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 15px; /* Set to 50% of the parent container */
+  /* float: right; Align to the right */
+  display: flex;
+  flex-direction: column; /* Stack the items vertically */
+  flex-grow: 2;
+  height: fit-content;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; /* Adjust as needed */
+}
+
+.summary span {
+  display: inline-block;
+  margin-right: 20px; /* Add some space between each item */
+}
+
+.summary span:last-child {
+  margin-right: 0; /* No margin for the last item */
+}
+
+.side-list-items {
+  font-size: 18px;
+}
+.side-items:hover {
+  color: #8400ff;
+}
+
+.selected {
+  color: #8400ff;
+}
+
+.loader-div {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#expenseTable {
+  background-color: blue;
+}
+
+#downloadButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 3px;
+  background-color: blueviolet;
+  color: white;
+  font-size: 14px; /* Reduce the font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#downloadButton:hover {
+  background-color: rgb(174, 121, 224);
+}

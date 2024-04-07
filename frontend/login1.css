@@ -1,0 +1,75 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border box;
+}
+
+body {
+  background-image: url("https://images.pexels.com/photos/13466249/pexels-photo-13466249.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover; /*  Use "cover" to make sure the image covers the entire background */
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Arial", sans-serif;
+}
+
+.contain {
+  display: flex;
+  width: 300px;
+  height: 400px;
+  background-color: black;
+  margin-top: 120px;
+  margin-left: 150px;
+  text-align: center;
+  color: white;
+  border-radius: 8px;
+}
+h1 {
+  font-size: 36px;
+  color: black;
+  margin-left: 150px;
+  margin-top: 30px;
+  font-size: xx-large;
+}
+.contain .text {
+  position: relative;
+  top: 7%;
+}
+.inp1 {
+  border: none;
+  background-color: black;
+  border-bottom: 3px solid white;
+  width: 250px;
+  font-size: 16px;
+  margin-top: 40px;
+  outline: none;
+  color: aliceblue;
+}
+.text button {
+  width: 250px;
+  height: 44px;
+  background-color: rgb(226, 156, 243);
+  color: black;
+  border: none;
+  font-size: 22px;
+  border-radius: 25px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+button:hover {
+  border: 3px solid rgb(226, 156, 243);
+  color: white;
+  background-color: black;
+}
+p {
+  margin-top: 30px;
+  font-size: 20px;
+  color: white;
+}
+a {
+  color: rgb(226, 156, 243);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

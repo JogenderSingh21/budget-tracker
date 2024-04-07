@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="dash.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handsontable Example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li class="active">
+                <a href="Home1.html" class="side-items ">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="side-list-items">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="Profile.html" class="side-items">
+                    <i class="fas fa-user"></i>
+                    <span class="side-list-items">Profile</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="Statistics.html" class="side-items">
+                    <i class="fas fa-chart-bar "></i>
+                    <span class="side-list-items ">Statistics</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="side-items">
+                    <i class="fas fa-briefcase selected"></i>
+                    <span class="side-list-items selected">Record</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="side-items">
+                    <i class="fas fa-cog"></i>
+                    <span class="side-list-items">Settings</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="#" class="side-items">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="side-list-items" onclick="logout()">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main--content">
+        <div class="header--wraper">
+            <div class="header--title">
+                <h2>BUDGET TRACKER</h2>
+            </div>
+        </div>
+        <div
+            style="display: flex;flex-direction: column; justify-content: space-between; min-height: 85vh; background-color: rgb(243, 235, 235); border-radius: 10px; padding: 10px;">
+            <div id="exampleFilterBasicDemo" style="height: 400px; width: 99%;"></div>
+            <button id="downloadButton">Download Spreadsheet</button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+        <script src="records.js"></script>
+    </div>
+
+</body>
+
+</html>

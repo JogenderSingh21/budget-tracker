@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+        background-image: url("https://images.pexels.com/photos/13466249/pexels-photo-13466249.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+        background-size: cover;
+        background-position: center;
+        font-family: 'Arial', sans-serif;
+    
+}
+
+.container {
+    display: flex;
+    margin-top:120px ;
+    margin-left: 150px;
+    height: 70vh;
+}
+
+.form {
+    background-color: black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    color:rgb(226, 156, 243) ;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    width: 250px;
+    height: 44px;
+    background-color: rgb(226, 156, 243);
+    color: black;
+    border: none;
+    font-size: 22px;
+    border-radius: 25px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 3px solid rgb(226, 156, 243);
+    color:white;
+    font-size: 20px;
+    background-color: black;;
+}
+
+p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+a {
+    color: rgb(226, 156, 243);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

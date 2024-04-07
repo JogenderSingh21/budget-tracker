@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dash.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Settings</title>
+    <style>
+        /* Styles for container */
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+        }
+
+        .container-content {
+            max-width: 800px;
+            /* Increase the max-width here */
+            padding: 20px;
+            border: 1px solid #f084eb;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f19ee6;
+        }
+
+        /* Styles for heading */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Styles for settings list */
+        .settings-list {
+            list-style: none;
+            padding: 0;
+
+        }
+
+        /* Styles for settings list items */
+        .settings-list li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* Styles for settings link */
+        .settings-list li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* Styles for icon */
+        .settings-list li a i {
+            margin-right: 10px;
+        }
+
+        /* Styles for modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Styles for modal content */
+        .modal-content {
+            background-color: #eb8cc5;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 5px;
+            width: 80%;
+        }
+
+        /* Styles for close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <!-- Added the opening <div> tag for the logo class -->
+        <div class="logo"></div>
+        <ul class="menu">
+            <li class="active">
+                <a href="Home1.html" class="side-items ">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="side-list-items">Home</span>
+                </a>
+            </li>
+            <li id="profileList">
+                <a href="Profile.html" class="side-items" id="profileItem">
+                    <i class="fas fa-user "></i>
+                    <span class="side-list-items ">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="Statistics.html" class="side-items">
+                    <i class="fas fa-chart-bar "></i>
+                    <span class="side-list-items ">Statistics</span>
+                </a>
+            </li>
+            <li>
+                <a href="Records.html" class="side-items">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="side-list-items">Record</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="side-items">
+                    <i class="fas fa-cog"></i>
+                    <span class="side-list-items">Settings</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="#" class="side-items">
+                    <i class="fas fa-sign-out-alt selected"></i>
+                    <span class="side-list-items selected" onclick="logout()">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main--content">
+        <div class="header--wraper">
+            <div class="header--title">
+                <h2>BUDGET TRACKER</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container-content">
+                <h1>Settings</h1>
+                <ul class="settings-list">
+                    <li>
+                        <a href="#" id="changePasswordBtn">
+                            <i class="fas fa-key"></i>
+                            <span>Change Password</span>
+                        </a>
+                        <!-- Change Password Modal -->
+                        <div id="changePasswordModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <h2>Change Password</h2>
+                                <form id="changePasswordForm">
+                                    <label for="currentPassword">Current Password:</label>
+                                    <input type="password" id="currentPassword" name="currentPassword" required>
+                                    <label for="newPassword">New Password:</label>
+                                    <input type="password" id="newPassword" name="newPassword" required>
+                                    <label for="confirmPassword">Confirm Password:</label>
+                                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                    <button type="button" onclick="changePassword()">Save Changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" id="feedbackBtn">
+                            <i class="fas fa-comment-alt"></i>
+                            <span>Feedback</span>
+                        </a>
+                        <!-- Feedback Modal -->
+                        <div id="feedbackModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <h2>Feedback</h2>
+                                <form id="feedbackForm">
+                                    <label for="feedbackMessage">Your Feedback:</label>
+                                    <textarea id="feedbackMessage" name="feedbackMessage" rows="4" required></textarea>
+                                    <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Get the modals and buttons
+        var changePasswordModal = document.getElementById('changePasswordModal');
+        var feedbackModal = document.getElementById('feedbackModal');
+        var changePasswordBtn = document.getElementById('changePasswordBtn');
+        var feedbackBtn = document.getElementById('feedbackBtn');
+        var closeBtns = document.getElementsByClassName('close');
+        // Open the change password modal
+        changePasswordBtn.onclick = function (event) {
+            event.preventDefault();
+            changePasswordModal.style.display = 'block';
+        }
+        // Open the feedback modal
+        feedbackBtn.onclick = function (event) {
+            event.preventDefault();
+            feedbackModal.style.display = 'block';
+        }
+        // Close the modals when clicking the close button
+        for (var i = 0; i < closeBtns.length; i++) {
+            closeBtns[i].onclick = function () {
+                changePasswordModal.style.display = 'none';
+                feedbackModal.style.display = 'none';
+            }
+        }
+        // Close the modals when clicking outside of them
+        window.onclick = function (event) {
+            if (event.target == changePasswordModal || event.target == feedbackModal) {
+                changePasswordModal.style.display = 'none';
+                feedbackModal.style.display = 'none';
+            }
+        }
+        // Function to change password (placeholder)
+        function changePassword() {
+            // Implement password change logic here
+            alert('Password changed successfully!');
+            changePasswordModal.style.display = 'none';
+        }
+        // Function to submit feedback (placeholder)
+        function submitFeedback() {
+            // Implement feedback submission logic here
+            alert('Feedback submitted successfully!');
+            feedbackModal.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

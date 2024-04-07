@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login1.css">
+</head>
+
+<body>
+    <div class="contain">
+        <div class="text">
+            <div>
+                <input class="inp1" type="text" id="username" placeholder="Enter user name" required>
+                <input class="inp1" type="password" id="password" placeholder="Enter password" required>
+                <button onclick="submitForm()">Login</button>
+                <p>Not a member? <a href="Signup.html">Sign Up</a></p>
+                <p><a href="ForgotPass.html">Forgot Password? </a></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function submitForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (password == "" || username == "") {
+                console.log("Empty credentials")
+                alert("Empty credentials")
+                return
+            }
+
+            const formData = {
+                username: username,
+                password: password
+            };
+
+            fetch('http://localhost:3000/api/v1/user/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Signin failed. Please try again.');
+                    }
+                })
+                .then(data => {
+                    localStorage.setItem("token", data.token)
+                    window.location.href = `home1.html`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+        }
+    </script>
+</body>
+
+</html>
