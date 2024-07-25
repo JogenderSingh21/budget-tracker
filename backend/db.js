@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  "mongodb+srv://yadavvarsha0012:5yUvWAtgHvz56YPo@cluster0.przpzic.mongodb.net/Expense-Tracker"
+  "mongodb://localhost:27017/"
 );
 
 const userSchema = new mongoose.Schema({
